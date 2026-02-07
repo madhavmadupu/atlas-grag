@@ -111,12 +111,40 @@ cp .env.example .env
 ### Running Atlas-GRAG
 
 ```bash
-# Start the application
-python main.py
+# Ingest sample supply chain data
+python main.py ingest
 
-# Or run the Streamlit dashboard
+# Or ingest a custom file
+python main.py ingest --file data/my_documents.txt
+
+# Query from command line
+python main.py query "How will the Singapore strike impact GlobalTech?"
+
+# Query with reasoning trace
+python main.py query -v "What companies depend on FlowChips?"
+
+# Launch interactive Streamlit dashboard
+python main.py ui
+
+# Or run directly with Streamlit
 streamlit run src/app/main.py
 ```
+
+## 💡 Example Queries
+
+Try these questions to see multi-hop reasoning in action:
+
+1. **Supply Chain Impact**
+   > "How will the labor strike in Singapore specifically impact GlobalTech's ability to compete with EuroComputing?"
+
+2. **Dependency Analysis**
+   > "What companies depend on components manufactured by TechFlow Inc?"
+
+3. **Risk Propagation**
+   > "Which supply chains are at risk from the Port of Singapore backlog?"
+
+4. **Connection Discovery**
+   > "How is TechFlow Inc connected to GlobalTech?"
 
 ## 📁 Project Structure
 
@@ -133,7 +161,7 @@ Atlas-GRAG/
 ├── tests/              # Test suite
 ├── .env.example        # Environment template
 ├── requirements.txt    # Dependencies
-└── main.py             # Entry point
+└── main.py             # CLI entry point
 ```
 
 ## 🧪 Testing
@@ -142,9 +170,17 @@ Atlas-GRAG/
 # Run all tests
 pytest
 
+# Run with verbose output
+pytest -v
+
 # Run with coverage
 pytest --cov=src --cov-report=html
+
+# Run specific test module
+pytest tests/test_hybrid.py -v
 ```
+
+**Current Test Coverage: 66+ tests**
 
 ## 📝 License
 
