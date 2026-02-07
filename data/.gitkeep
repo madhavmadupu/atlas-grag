@@ -1,0 +1,2 @@
+# This file ensures the data directory is tracked by git
+# Place raw text files and PDFs here for ingestion
